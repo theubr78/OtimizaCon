@@ -1,0 +1,25 @@
+{
+  "name": "procuradoria-server",
+  "version": "1.0.0",
+  "description": "Backend API em Node.js e TypeScript com Clean Architecture e POO para a plataforma Procuradoria | Officecon",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/interfaces/http/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "seed": "tsx src/infrastructure/database/seed.ts"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^20.17.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
