@@ -30,7 +30,7 @@
     );
     return {
       template: dc.innerHTML,
-      js: scriptEl ? scriptEl.textContent || "" : "",
+      js: (scriptEl ? scriptEl.textContent || "" : "") || (typeof window !== "undefined" && window.Component ? "return window.Component;" : ""),
       props,
       preview
     };
@@ -839,7 +839,14 @@
       return {};
     }
   };
+  if (typeof window !== "undefined") {
+    window.DCLogic = StreamableLogic;
+    window.StreamableLogic = StreamableLogic;
+  }
   function evalDcLogic(src) {
+    if (typeof window !== "undefined" && window.Component && typeof window.Component === "function") {
+      return window.Component;
+    }
     //! nosemgrep: eval-and-function-constructor
     const fn = new Function(
       "DCLogic",
